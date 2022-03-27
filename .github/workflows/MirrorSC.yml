@@ -12,43 +12,39 @@ jobs:
     timeout-minutes: 525600
 
     steps:
-      - name: Checkouts
+      - name: Checkeando y Limpiando vps
         uses: actions/checkout@main
       - uses: rokibhasansagar/slimhub_actions@main
-      
-      - name: Reclaiming disk space on / by disabling swap partition
-        run: |
-          sudo swapoff -av
-          sudo rm -f /swapfile
 
-      - name: Set Git Configs & Secrets
+      - name: Configurando Instancia
         run: |
           git config --global user.email "${{ secrets.GH_EMAIL }}"
           git config --global user.name "${{ secrets.GH_NAME }}" 
           git config --global pull.rebase false
           git config --global credential.helper store
-          echo "https://FabriSC:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
+          echo "https://${{ secrets.GH_NAME }}:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
 
-      - name: cloning repo 
+      - name: Clonando Repositorio
         continue-on-error: true
         run: |
           git clone ${{ secrets.RP_MIRROR }} MirrorSC
           git clone https://github.com/${{ secrets.GH_NAME }}/MirrorSC-Actions.git SC
    
-      - name: install docker and configuration
+      - name: Instalando Dcker
         continue-on-error: true
         run: |
           curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh
        
-      - name: Running Bot
-        timeout-minutes: 360
+      - name: Corriendo el Bot
+        timeout-minutes: 355
         continue-on-error: true
         run: |
           cd MirrorSC
           docker build . --rm --force-rm --compress --no-cache=true --pull --file Dockerfile -t mirror-bot
           docker run --privileged --rm -i mirror-bot
            
-      - name: Loop workflow
+      - name: Proceso de Automizacion
+        timeout-minutes: 5
         continue-on-error: true
         run: |
           cd SC
