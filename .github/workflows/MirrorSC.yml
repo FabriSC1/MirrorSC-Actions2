@@ -36,7 +36,7 @@ jobs:
           curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh
        
       - name: Corriendo el Bot
-        timeout-minutes: 355
+        timeout-minutes: 320
         continue-on-error: true
         run: |
           cd MirrorSC
