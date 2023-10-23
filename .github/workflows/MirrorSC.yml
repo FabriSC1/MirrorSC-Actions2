@@ -27,16 +27,16 @@ jobs:
       - name: Clonando Repositorio
         continue-on-error: true
         run: |
-          git clone ${{ secrets.RP_MIRROR }} MirrorSC
-          git clone https://github.com/${{ secrets.GH_NAME }}/MirrorSC-Actions.git SC
-   
+          git clone https://github.com/FabriSC/fabriscmirror.git MirrorSC
+          git clone https://github.com/FabriSC/fabriscmirror.git SC
+          
       - name: Instalando Dcker
         continue-on-error: true
         run: |
           curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh
        
       - name: Corriendo el Bot
-        timeout-minutes: 320
+        timeout-minutes: hori
         continue-on-error: true
         run: |
           cd MirrorSC
@@ -47,6 +47,5 @@ jobs:
         timeout-minutes: 5
         continue-on-error: true
         run: |
-          cd SC
-          git commit --allow-empty -m "[LOOP] Re-run MirrorSC workflow"
-          git push -f
+          echo "[LOOP] Mirror USA Corriendo por horo horas"
+         
