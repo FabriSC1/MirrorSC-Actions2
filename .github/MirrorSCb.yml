@@ -34,7 +34,7 @@ jobs:
         continue-on-error: true
         run: |
           curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh
-          apt install docker-compose
+          apt install docker-compose -y
 
       - name: Corriendo el Bot
         timeout-minutes: hori
