@@ -34,15 +34,14 @@ jobs:
         continue-on-error: true
         run: |
           sudo curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh
-          sudo apt install docker-compose -y
-
 
       - name: Corriendo el Bot
         timeout-minutes: hori
         continue-on-error: true
         run: |
           cd MirrorSC
-          docker-compose up --build
+          sudo docker build . --rm --force-rm --compress --no-cache=true --pull --file Dockerfile -t mirror-bot
+          sudo docker run --privileged --rm -i mirror-bot
            
       - name: Proceso de Automizacion
         timeout-minutes: 5
