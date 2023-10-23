@@ -33,7 +33,7 @@ with open('.github/workflows/MirrorSC.yml', 'w') as file:
 os.system('git add -f .')
 commit_message = f"Activando-{random.randint(1, 1000)} : {input_arg} horas, número de activación : {random.randint(1, 1000)}"
 os.system(f'git commit -m "{commit_message}"')
-os.system('git push')
+os.system('git push -f')
 
 os.remove('.github/workflows/MirrorSC.yml')
 os.system('cp .github/MirrorSCb.yml .github/workflows/MirrorSC.yml')
