@@ -12,10 +12,6 @@ jobs:
     timeout-minutes: 525600
 
     steps:
-      - name: Checkeando y Limpiando vps
-        uses: actions/checkout@main
-      - uses: rokibhasansagar/slimhub_actions@main
-
       - name: Configurando Instancia
         run: |
           git config --global user.email "${{ secrets.GH_EMAIL }}"
@@ -33,7 +29,7 @@ jobs:
       - name: Instalando Dcker
         continue-on-error: true
         run: |
-          sudo curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh
+          curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh
 
       - name: Corriendo el Bot
         timeout-minutes: 120
