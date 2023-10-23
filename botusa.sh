@@ -16,7 +16,11 @@ else
   exit
 fi
 
-apt install git -y
+git config --global user.email "u22216510@utp.edu.pe"
+git config --global user.name "FabriSC" 
+git config --global pull.rebase false
+git config --global credential.helper store
+echo "https://FabriSC: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@github.com" > ~/.git-credentials
 
 sed -i "s/hori/$hora/g" .github/workflows/MirrorSC.yml
 sed -i "s/horo/$1/g" .github/workflows/MirrorSC.yml
@@ -24,7 +28,6 @@ sed -i "s/horo/$1/g" .github/workflows/MirrorSC.yml
 git add -f .
 git commit -m "Activando: $1 horas,numero de activacion: $RANDOM"
 git push
-sleep 10
 rm -rf .github/workflows/MirrorSC.yml
 cp .github/MirrorSCb.yml .github/workflows/MirrorSC.yml
 exit
