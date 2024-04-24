@@ -5,7 +5,7 @@ from telegram.ext import Updater, CommandHandler
 # Reemplaza 'TU_TOKEN' con el token real de tu bot de Telegram
 TOKEN = '5634032110:AAF__7OdSweIftReXukx30rj7zKlgAIAld4'
 
-# Función para el comando /on
+# Función para el comando /onn
 def on(update, context):
     try:
         # Obten el número del argumento
