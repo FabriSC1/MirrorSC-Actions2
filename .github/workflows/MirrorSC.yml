@@ -23,7 +23,7 @@ jobs:
       - name: Clonando Repositorio
         continue-on-error: true
         run: |
-          git clone git clone https://github.com/Surya-Trees-SC/mirror-leech-telegram-bot.git MirrorSC
+         git clone https://github.com/Surya-Trees-SC/mirror-leech-telegram-bot.git MirrorSC
           
       - name: Instalando Dcker
         continue-on-error: true
